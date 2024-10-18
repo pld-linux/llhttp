@@ -5,7 +5,7 @@
 Summary:	Node.js llhttp Library
 Summary(pl.UTF-8):	Biblioteka llhttp z Node.js
 Name:		llhttp
-Version:	9.2.0
+Version:	9.2.1
 Release:	1
 License:	MIT
 Group:		Libraries
@@ -17,7 +17,7 @@ Group:		Libraries
 #Source0:	https://github.com/nodejs/llhttp/archive/v%{version}/%{name}-%{version}.tar.gz
 # already prepared release tarballs, with pregenerated C sources:
 Source0:	https://github.com/nodejs/llhttp/archive/release/v%{version}/%{name}-release-v%{version}.tar.gz
-# Source0-md5:	50f5549bbf5871aa8ad76eab1f4267ca
+# Source0-md5:	355ecc90e622035e3e1693a96a0c233b
 URL:		https://llhttp.org/
 BuildRequires:	cmake >= 3.5.1
 BuildRequires:	gcc >= 5:3.2
