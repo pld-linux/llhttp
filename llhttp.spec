@@ -5,7 +5,7 @@
 Summary:	Node.js llhttp Library
 Summary(pl.UTF-8):	Biblioteka llhttp z Node.js
 Name:		llhttp
-Version:	9.2.1
+Version:	9.3.0
 Release:	1
 License:	MIT
 Group:		Libraries
@@ -17,9 +17,10 @@ Group:		Libraries
 #Source0:	https://github.com/nodejs/llhttp/archive/v%{version}/%{name}-%{version}.tar.gz
 # already prepared release tarballs, with pregenerated C sources:
 Source0:	https://github.com/nodejs/llhttp/archive/release/v%{version}/%{name}-release-v%{version}.tar.gz
-# Source0-md5:	355ecc90e622035e3e1693a96a0c233b
+# Source0-md5:	7e0386dd9c888344e80f39124043d406
+Patch0:		%{name}-cmake.patch
 URL:		https://llhttp.org/
-BuildRequires:	cmake >= 3.5.1
+BuildRequires:	cmake >= 3.25.0
 BuildRequires:	gcc >= 5:3.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -55,17 +56,16 @@ Statyczna biblioteka llhttp.
 
 %prep
 %setup -q -n %{name}-release-v%{version}
+%patch -P0 -p1
 
 %build
-install -d build
-cd build
-%cmake .. \
+%cmake -B build \
 	%{?with_static_libs:-DBUILD_STATIC_LIBS=ON} \
 	-DCMAKE_CONFIGURATION_TYPES=fake_to_allow_PLD_build_type \
 	-DCMAKE_INSTALL_INCLUDEDIR=include \
 	-DCMAKE_INSTALL_LIBDIR=%{_lib}
 
-%{__make}
+%{__make} -C build
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -82,12 +82,12 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc LICENSE-MIT README.md
-%attr(755,root,root) %{_libdir}/libllhttp.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libllhttp.so.9.2
+%{_libdir}/libllhttp.so.*.*.*
+%ghost %{_libdir}/libllhttp.so.9.3
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libllhttp.so
+%{_libdir}/libllhttp.so
 %{_includedir}/llhttp.h
 %{_libdir}/cmake/llhttp
 %{_pkgconfigdir}/libllhttp.pc

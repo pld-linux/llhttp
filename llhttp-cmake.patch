@@ -1,0 +1,13 @@
+--- llhttp-release-v9.3.0/CMakeLists.txt.orig	2025-05-03 19:04:09.000000000 +0200
++++ llhttp-release-v9.3.0/CMakeLists.txt	2025-12-16 06:23:35.518712636 +0100
+@@ -92,9 +92,7 @@ if(BUILD_STATIC_LIBS)
+   add_library(llhttp_static STATIC
+       ${llhttp_src}
+   )
+-  if(BUILD_SHARED_LIBS)
+-    add_library(llhttp::llhttp ALIAS llhttp_shared)
+-  else()
++  if(NOT BUILD_SHARED_LIBS)
+     add_library(llhttp::llhttp ALIAS llhttp_static)
+   endif()
+   config_library(llhttp_static)
