@@ -6,7 +6,7 @@ Summary:	Node.js llhttp Library
 Summary(pl.UTF-8):	Biblioteka llhttp z Node.js
 Name:		llhttp
 Version:	9.3.0
-Release:	1
+Release:	2
 License:	MIT
 Group:		Libraries
 #Source0Download: https://github.com/nodejs/llhttp/releases
