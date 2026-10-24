@@ -6,7 +6,7 @@ Summary:	Node.js llhttp Library
 Summary(pl.UTF-8):	Biblioteka llhttp z Node.js
 Name:		llhttp
 Version:	9.3.0
-Release:	2
+Release:	3
 License:	MIT
 Group:		Libraries
 #Source0Download: https://github.com/nodejs/llhttp/releases
@@ -34,7 +34,7 @@ Biblioteka llhttp z Node.js - port biblioteki http_parser do llparse.
 Summary:	Header file for llhttp library
 Summary(pl.UTF-8):	Plik nagłówkowy biblioteki llhttp
 Group:		Development/Libraries
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}%{?_isa} = %{version}-%{release}
 
 %description devel
 Header file for llhttp library.
@@ -46,7 +46,7 @@ Plik nagłówkowy biblioteki llhttp.
 Summary:	Static llhttp library
 Summary(pl.UTF-8):	Statyczna biblioteka llhttp
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}-%{release}
+Requires:	%{name}-devel%{?_isa} = %{version}-%{release}
 
 %description static
 Static llhttp library.
